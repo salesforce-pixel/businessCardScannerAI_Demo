@@ -29,7 +29,7 @@ Enable the following features in your target Salesforce org:
 
 ```bash
 git clone https://github.com/salesforce-pixel/businessCardScannerAI_Demo.git
-cd <repository-name>
+cd businessCardScannerAI_Demo
 ```
 
 ### Step 2: Authenticate with Your Salesforce Org

@@ -9,9 +9,13 @@
         <members>businessCardScanner</members>
         <name>LightningComponentBundle</name>
     </types>
-        <types>
+    <types>
         <members>Business_Card_Scanner_Prompt</members>
         <name>GenAiPromptTemplate</name>
+    </types>
+    <types>
+        <members>Business_Card_Scanner</members>
+        <name>FlexiPage</name>
     </types>
     <version>65.0</version>
 </Package>
