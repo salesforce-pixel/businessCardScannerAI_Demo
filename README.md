@@ -1,18 +1,53 @@
-# Salesforce DX Project: Next Steps
+# AI-powered Business Card Analyzer in Salesforce
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+**Author:** Rajeev Shekhar – rshekhar@salesforce.com
 
-## How Do You Plan to Deploy Your Changes?
+This is a Salesforce DX project that deploys an AI-powered **Business Card Analyzer in Salesforce**, designed to analyze uploaded Business Cards in image format using multimodal capabilities in Prompt Templates.
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+## Prerequisites
 
-## Configure Your Salesforce DX Project
+Make sure you have the following tools installed and the required features enabled before starting:
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+### Required Tools
 
-## Read All About It
+* **Salesforce CLI** (sf CLI) – Latest version
+* **Node.js** – Version 18 or higher
+* **Git** – For version control
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+### Org Feature Enablement
+
+Enable the following features in your target Salesforce org:
+
+* Einstein Generative AI
+* Agentforce
+* Prompt Builder
+* Data Cloud
+
+## Quick Start Guide
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/salesforce-pixel/businessCardScannerAI_Demo.git
+cd <repository-name>
+```
+
+### Step 2: Authenticate with Your Salesforce Org
+
+```bash
+sf org login web -a targetOrg
+```
+
+**Note:** Replace `targetOrg` with your preferred alias for the target org.
+
+### Step 3: Deploy to Salesforce
+
+```bash
+sf project deploy start -x manifest/package.xml -o targetOrg -l NoTestRun
+```
+
+This command deploys the metadata into your target org.
+
+### Step 4: Configure the Lightning App Builder
+
+* After deployment and LWC creation, create a App Page in Lightning App Builder, and make this Page available in the the App of your choice.
