@@ -1,0 +1,255 @@
+.bcs-container {
+    padding: 1rem;
+}
+
+/* Header */
+.bcs-header {
+    position: relative;
+}
+
+.bcs-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.15rem 0;
+}
+
+.bcs-subtitle {
+    font-size: 0.8rem;
+    color: #4f6b8a;
+    margin: 0.1rem 0 0 0;
+}
+
+/* Step chips */
+.bcs-step-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    background: #f3f2f2;
+    color: #50505a;
+    margin-bottom: 0.35rem;
+}
+
+.bcs-step-chip-alt {
+    background: #ecf3ff;
+    color: #1b5297;
+}
+
+/* Upload section */
+.bcs-upload-panel {
+    border-radius: 1rem;
+    border: 1px dashed #d8dde6;
+    padding: 1rem;
+    text-align: center;
+    background: linear-gradient(135deg, #fdfdff 0%, #f5f7fb 100%);
+}
+
+.bcs-upload-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.bcs-upload-hint {
+    font-size: 0.75rem;
+    color: #6b778c;
+    margin: 0.25rem 0 0.5rem 0;
+}
+
+.bcs-upload-input {
+    margin-top: 0.5rem;
+}
+
+.bcs-file-name {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: #4f6b8a;
+}
+
+.bcs-file-name span {
+    font-weight: 600;
+}
+
+/* Section heading */
+.bcs-section-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.35rem;
+}
+
+.bcs-section-title {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* Preview */
+.bcs-preview {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid #d8dde6;
+    background: #ffffff;
+    max-height: 260px;
+}
+
+.bcs-preview img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Actions */
+.bcs-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+/* Spinner */
+.bcs-spinner-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0.75rem;
+}
+
+.bcs-spinner-text {
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+    color: #4f6b8a;
+}
+
+/* Status banner */
+.bcs-status {
+    font-size: 0.8rem;
+    border-radius: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+/* AI extracted info card */
+.bcs-ai-card {
+    margin-top: 0.5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: #f6f8fc;
+    border: 1px solid #dde3f0;
+}
+
+.bcs-ai-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.bcs-ai-icon {
+    flex-shrink: 0;
+}
+
+.bcs-ai-title {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.bcs-ai-subtitle {
+    margin: 0.15rem 0 0;
+    font-size: 0.75rem;
+    color: #6b778c;
+}
+
+/* AI grid */
+.bcs-ai-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.25rem;
+}
+
+@media (min-width: 480px) {
+    .bcs-ai-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 1.5rem;
+    }
+}
+
+.bcs-ai-row {
+    display: flex;
+    font-size: 0.8rem;
+}
+
+.bcs-ai-label {
+    font-weight: 600;
+    color: #4a5568;
+    margin-right: 0.5rem;
+    min-width: 5.5rem;
+    white-space: nowrap;
+}
+
+.bcs-ai-value {
+    color: #1a202c;
+    word-break: break-word;
+}
+
+/* Existing lead card */
+.bcs-existing-card {
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+    border-radius: 0.9rem;
+    background: #f6f8fc;
+    border: 1px solid #dde3f0;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.bcs-existing-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.bcs-existing-title {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.bcs-existing-sub {
+    margin: 0.05rem 0;
+    font-size: 0.75rem;
+    color: #4f6b8a;
+}
+
+.bcs-view-lead {
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.bcs-view-lead-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    text-decoration: none;
+    background: #f0f5ff;
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid #d6e4ff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #1b4fba;
+}
+
+.bcs-view-lead-link:hover {
+    background: #e6efff;
+}
+
+.bcs-view-lead-icon {
+    margin-right: 0.1rem;
+}

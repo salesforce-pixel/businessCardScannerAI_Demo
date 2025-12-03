@@ -1,0 +1,187 @@
+<template>
+    <lightning-card icon-name="utility:scan" title="Business Card → Lead">
+        <div class="bcs-container">
+
+            <!-- STEP 1: Upload -->
+            <div class="bcs-header slds-m-bottom_medium">
+                <div class="bcs-step-chip">Step 1</div>
+                <h2 class="bcs-title">Scan Business Cards</h2>
+                <p class="bcs-subtitle">
+                    Take a photo of a business card or upload an existing image. You’ll see the magic of AI to create or update a Lead.
+                </p>
+            </div>
+
+            <!-- Upload area -->
+            <div class="bcs-upload slds-m-bottom_medium">
+                <div class="bcs-upload-panel">
+                    <lightning-icon
+                        icon-name="utility:photo"
+                        alternative-text="Photo"
+                        size="small"
+                        class="slds-m-bottom_small"
+                    ></lightning-icon>
+
+                    <p class="bcs-upload-title">Business Card Image</p>
+                    <p class="bcs-upload-hint">
+                        On mobile, tap below to <b>take a photo</b> or choose from your gallery.
+                    </p>
+
+                    <lightning-file-upload
+                        label="Take or upload business card"
+                        name="businessCardUpload"
+                        accept={acceptedFormats}
+                        record-id={recordId}
+                        onuploadfinished={handleUploadFinished}
+                        class="bcs-upload-input">
+                    </lightning-file-upload>
+
+                    <template if:true={uploadedFileName}>
+                        <p class="bcs-file-name">
+                            Selected file: <span>{uploadedFileName}</span>
+                        </p>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Preview -->
+            <template if:true={previewUrl}>
+                <div class="bcs-section-heading">
+                    <div class="bcs-step-chip bcs-step-chip-alt">Preview</div>
+                    <h3 class="bcs-section-title">Card Preview</h3>
+                </div>
+
+                <div class="bcs-preview slds-m-bottom_medium">
+                    <img src={previewUrl} alt="Business card preview" />
+                </div>
+            </template>
+
+            <!-- STEP 2: Analyze -->
+            <div class="bcs-actions slds-m-bottom_medium">
+                <lightning-button
+                    variant="neutral"
+                    label="Clear"
+                    onclick={handleClear}
+                    disabled={isClearDisabled}
+                    class="slds-m-right_small"
+                ></lightning-button>
+
+                <lightning-button
+                    variant="brand"
+                    label="Analyze with AI"
+                    onclick={handleAnalyze}
+                    disabled={isAnalyzeDisabled}
+                ></lightning-button>
+            </div>
+
+            <!-- Spinner -->
+            <template if:true={isProcessing}>
+                <div class="bcs-spinner-wrapper">
+                    <lightning-spinner
+                        alternative-text="Analyzing business card"
+                        size="medium"
+                    ></lightning-spinner>
+                    <p class="bcs-spinner-text">
+                        Talking to the AI engine and preparing Lead details…
+                    </p>
+                </div>
+            </template>
+
+            <!-- Status -->
+            <template if:true={statusMessage}>
+                <div class={statusClass}>
+                    <p>{statusMessage}</p>
+                </div>
+            </template>
+
+            <!-- Lead Navigation Link -->
+            <template if:true={leadId}>
+                <div class="bcs-view-lead">
+                    <a
+                        href={leadRecordUrl}
+                        target="_blank"
+                        class="bcs-view-lead-link"
+                    >
+                        <lightning-icon
+                            icon-name="utility:record"
+                            size="x-small"
+                            class="bcs-view-lead-icon"
+                        ></lightning-icon>
+                        <span>Open Lead Record</span>
+                    </a>
+                </div>
+            </template>
+
+
+            <!-- STEP 3: Extracted Information (AI) -->
+            <template if:true={extracted}>
+                <div class="bcs-section-heading slds-m-top_large">
+                    <div class="bcs-step-chip bcs-step-chip-alt">Step 3</div>
+                    <h3 class="bcs-section-title">Extracted Information (AI)</h3>
+                </div>
+
+                <div class="bcs-ai-card">
+                    <div class="bcs-ai-header">
+                        <lightning-icon
+                            icon-name="utility:apex"
+                            alternative-text="AI"
+                            size="small"
+                            class="bcs-ai-icon">
+                        </lightning-icon>
+
+                        <div>
+                            <p class="bcs-ai-title">AI-Detected Lead Details</p>
+                            <p class="bcs-ai-subtitle">
+                                Review the extracted information before creating or updating a Lead.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bcs-ai-grid">
+                        <template for:each={aiFields} for:item="f">
+                            <div key={f.label} class="bcs-ai-row">
+                                <div class="bcs-ai-label">{f.label}</div>
+                                <div class="bcs-ai-value">{f.value}</div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+
+            <!-- STEP 4: Existing Lead -->
+            <template if:true={existingLead}>
+                <div class="bcs-section-heading slds-m-top_large">
+                    <div class="bcs-step-chip bcs-step-chip-alt">Step 4</div>
+                    <h3 class="bcs-section-title">Existing Lead Found</h3>
+                </div>
+
+                <div class="bcs-existing-card">
+                    <lightning-icon icon-name="standard:lead" size="small"></lightning-icon>
+                    <div class="bcs-existing-text">
+                        <p class="bcs-existing-title">{existingLead.Name}</p>
+                        <p class="bcs-existing-sub">{existingLead.Company}</p>
+                        <p class="bcs-existing-sub">{existingLead.Email}</p>
+                    </div>
+                </div>
+
+                <div class="bcs-actions slds-m-top_small">
+                    <lightning-button
+                        variant="brand"
+                        label="Overwrite Lead with AI Data"
+                        onclick={handleOverwriteLead}>
+                    </lightning-button>
+                </div>
+            </template>
+
+            <!-- STEP 5: Create Lead (if none exists) -->
+            <template if:true={showCreateButton}>
+                <div class="bcs-actions slds-m-top_large">
+                    <lightning-button
+                        variant="brand"
+                        label="Create Lead"
+                        onclick={handleCreateLead}>
+                    </lightning-button>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
