@@ -48,6 +48,6 @@ sf project deploy start -x manifest/package.xml -o targetOrg -l NoTestRun
 
 This command deploys the metadata into your target org.
 
-### Step 4: Configure the Lightning App Builder
+### Step 4: Configure the Custom Tab
 
-* After deployment and LWC creation, create a App Page in Lightning App Builder, and make this Page available in the the App of your choice.
+* After successful deployment, create a Custom Tab in Setup with "Lightning Page Tabs" with Lightning Page selected as "	Business Card Scanner". Alternatively, you can also drag and drop the LWC directly on a record page, home page or app page.
